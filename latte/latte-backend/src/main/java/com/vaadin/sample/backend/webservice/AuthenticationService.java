@@ -13,14 +13,17 @@ public class AuthenticationService {
 
 	public boolean validateCredentials(String inputuname, String inputpasswd) {
 		Boolean isCredentialMatch = false;
+		
+		if (inputuname == null || inputuname.isEmpty() && inputpasswd == null || inputpasswd.isEmpty())
+			return false;
 
 		try {
-			URL url = new URL("http://coffee-latte.jelastic.servint.net/coffee-ws2/webapi/validate/get");
+			URL url = new URL("http://webservice.jelastic.servint.net/webapi/validate/get");
 			URLConnection connection = url.openConnection();
 
 			// set proxy when in office
-//			System.setProperty("http.proxyHost", "10.158.17.67");
-//			System.setProperty("http.proxyPort", "8080");
+			// System.setProperty("http.proxyHost", "10.158.17.67");
+			// System.setProperty("http.proxyPort", "8080");
 
 			String line;
 
@@ -36,15 +39,12 @@ public class AuthenticationService {
 				System.out.println("object json value in name:" + name);
 				System.out.println("object json value in passwd:" + password);
 
-				if (inputuname == null || inputuname.isEmpty() && inputpasswd == null || inputpasswd.isEmpty())
-					return false;
-
-				if (inputuname.trim().equals(name)  && inputpasswd.trim().equals(password))
+				if (inputuname.trim().equals(name) && inputpasswd.trim().equals(password)) {
 					isCredentialMatch = true;
-				else{
+				} else {
 					System.out.println("credential does not match 3");
 				}
-			
+
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
