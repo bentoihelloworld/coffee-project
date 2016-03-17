@@ -14,16 +14,14 @@ public class AuthenticationService {
 	public boolean validateCredentials(String inputuname, String inputpasswd) {
 		Boolean isCredentialMatch = false;
 		
-		if (inputuname == null || inputuname.isEmpty() && inputpasswd == null || inputpasswd.isEmpty())
-			return false;
 
 		try {
 			URL url = new URL("http://webservice.jelastic.servint.net/webapi/validate/get");
 			URLConnection connection = url.openConnection();
 
 			// set proxy when in office
-			// System.setProperty("http.proxyHost", "10.158.17.67");
-			// System.setProperty("http.proxyPort", "8080");
+			 System.setProperty("http.proxyHost", "10.158.17.67");
+			 System.setProperty("http.proxyPort", "8080");
 
 			String line;
 
