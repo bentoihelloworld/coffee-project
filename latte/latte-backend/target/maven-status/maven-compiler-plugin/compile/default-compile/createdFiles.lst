@@ -1,6 +1,7 @@
 com\vaadin\samples\backend\data\Availability.class
-com\vaadin\samples\backend\mock\MockDataService.class
 com\vaadin\samples\backend\DataService.class
-com\vaadin\samples\backend\data\Product.class
-com\vaadin\samples\backend\mock\MockDataGenerator.class
+com\vaadin\sample\backend\webservice\AuthenticationService.class
 com\vaadin\samples\backend\data\Category.class
+com\vaadin\samples\backend\mock\MockDataGenerator.class
+com\vaadin\samples\backend\mock\MockDataService.class
+com\vaadin\samples\backend\data\Product.class

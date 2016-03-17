@@ -1,5 +1,7 @@
 package com.vaadin.samples.authentication;
 
+import com.vaadin.sample.backend.webservice.AuthenticationService;
+
 /**
  * Default mock implementation of {@link AccessControl}. This implementation
  * accepts any string as a password, and considers the user "admin" as the only
@@ -9,11 +11,16 @@ public class BasicAccessControl implements AccessControl {
 
     @Override
     public boolean signIn(String username, String password) {
-        if (username == null || username.isEmpty())
-            return false;
-
+    	Boolean isValidated = false;
+    	
+    	
+    	AuthenticationService auth = new AuthenticationService();
+    	
+    	isValidated = auth.validateCredentials(username, password);
+    	System.out.println("Enter --- basic access control: " + isValidated);
+    	
         CurrentUser.set(username);
-        return true;
+        return isValidated;
     }
 
     @Override
