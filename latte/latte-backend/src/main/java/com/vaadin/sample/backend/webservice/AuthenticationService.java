@@ -3,6 +3,8 @@ package com.vaadin.sample.backend.webservice;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -13,16 +15,20 @@ public class AuthenticationService {
 
 	public boolean validateCredentials(String inputuname, String inputpasswd) {
 		Boolean isCredentialMatch = false;
-		
 
 		try {
 			URL url = new URL("http://webservice.jelastic.servint.net/webapi/validate/get");
 			URLConnection connection = url.openConnection();
 
-			// set proxy when in office
-			 System.setProperty("http.proxyHost", "10.158.17.67");
-			 System.setProperty("http.proxyPort", "8080");
+			String compname = System.getenv("COMPUTERNAME");
 
+			//set proxy when in office
+			if (compname.equals("5CG4310LZB")) {
+				// set proxy when in office
+				 System.setProperty("http.proxyHost", "10.158.17.67");
+				 System.setProperty("http.proxyPort", "8080");
+			}
+			
 			String line;
 
 			StringBuilder builder = new StringBuilder();
