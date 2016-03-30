@@ -17,7 +17,7 @@ public class AuthenticationService {
 		Boolean isCredentialMatch = false;
 
 		try {
-			URL url = new URL("http://webservice.jelastic.servint.net/webapi/validate/get");
+			URL url = new URL("https://coffee-webservice.herokuapp.com/webapi/validate/get");
 			URLConnection connection = url.openConnection();
 
 			String compname = System.getenv("COMPUTERNAME");

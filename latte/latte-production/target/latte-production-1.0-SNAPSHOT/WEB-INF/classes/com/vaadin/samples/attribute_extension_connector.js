@@ -1,1 +1,0 @@
-window.com_vaadin_samples_AttributeExtension=function(){this.onStateChange=function(){var d=this.getElement(this.getParentId());if(d){var e=this.getState().attributes;for(var f in e){if(e.hasOwnProperty(f)){d.setAttribute(f,e[f])}}}}};
